@@ -16,6 +16,9 @@
 		5AFF4330243CCF8000877590 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF432F243CCF8000877590 /* Article.swift */; };
 		5AFF4333243CD31C00877590 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF4332243CD31C00877590 /* NetworkManager.swift */; };
 		5AFF4336243CD77F00877590 /* GoTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF4335243CD77F00877590 /* GoTError.swift */; };
+		5AFF433A243DFAA200877590 /* GoTLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF4339243DFAA200877590 /* GoTLabel.swift */; };
+		5AFF4342243E2A0C00877590 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF4341243E2A0C00877590 /* UIViewController+Ext.swift */; };
+		5AFF4348243E418C00877590 /* GoTImageThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF4347243E418C00877590 /* GoTImageThumbnail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		5AFF432F243CCF8000877590 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		5AFF4332243CD31C00877590 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5AFF4335243CD77F00877590 /* GoTError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoTError.swift; sourceTree = "<group>"; };
+		5AFF4339243DFAA200877590 /* GoTLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoTLabel.swift; sourceTree = "<group>"; };
+		5AFF4341243E2A0C00877590 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		5AFF4347243E418C00877590 /* GoTImageThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoTImageThumbnail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,8 @@
 		5AFF4313243CC94B00877590 /* GoTApp */ = {
 			isa = PBXGroup;
 			children = (
+				5AFF4340243E29F300877590 /* Extensions */,
+				5AFF4337243DF61300877590 /* Custom Views */,
 				5AFF4334243CD76400877590 /* Utilities */,
 				5AFF4331243CD2E600877590 /* Manager */,
 				5AFF432E243CCE4800877590 /* Model */,
@@ -114,6 +122,39 @@
 				5AFF4335243CD77F00877590 /* GoTError.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		5AFF4337243DF61300877590 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				5AFF4346243E417300877590 /* ImageViews */,
+				5AFF4338243DF61D00877590 /* Labels */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		5AFF4338243DF61D00877590 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				5AFF4339243DFAA200877590 /* GoTLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		5AFF4340243E29F300877590 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5AFF4341243E2A0C00877590 /* UIViewController+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5AFF4346243E417300877590 /* ImageViews */ = {
+			isa = PBXGroup;
+			children = (
+				5AFF4347243E418C00877590 /* GoTImageThumbnail.swift */,
+			);
+			path = ImageViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,9 +227,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AFF4348243E418C00877590 /* GoTImageThumbnail.swift in Sources */,
 				5AFF4336243CD77F00877590 /* GoTError.swift in Sources */,
 				5AFF4333243CD31C00877590 /* NetworkManager.swift in Sources */,
+				5AFF4342243E2A0C00877590 /* UIViewController+Ext.swift in Sources */,
 				5AFF4315243CC94B00877590 /* AppDelegate.swift in Sources */,
+				5AFF433A243DFAA200877590 /* GoTLabel.swift in Sources */,
 				5AFF432D243CCCAC00877590 /* DetailViewVC.swift in Sources */,
 				5AFF432B243CCBAA00877590 /* MainViewVC.swift in Sources */,
 				5AFF4317243CC94B00877590 /* SceneDelegate.swift in Sources */,

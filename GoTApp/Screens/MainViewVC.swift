@@ -10,14 +10,43 @@ import UIKit
 
 class MainViewVC: UIViewController {
     
+    static let reuseID = "Article"
+    
     var tableView = UITableView()
     var article: ArticleResponse?
+    var spinner = UIActivityIndicatorView(style: .large)
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
         downloadArticles()
+        title = "Articles"
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    func showLoadingSpinner() {
+        spinner.frame = view.bounds
+        spinner.center = view.center
+        spinner.startAnimating()
+        spinner.backgroundColor = .systemBackground
+        
+        DispatchQueue.main.async {
+            self.tableView.isHidden = true
+            self.view.addSubview(self.spinner)
+        }
+    }
+    
+    func removeLoadingSpinner() {
+        DispatchQueue.main.async {
+            self.spinner.removeFromSuperview()
+            self.tableView.isHidden = false
+        }
     }
     
     private func configureTableView() {
@@ -26,10 +55,10 @@ class MainViewVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Article")
-        tableView.rowHeight = 80
     }
     
     func downloadArticles() {
+        showLoadingSpinner()
         NetworkManager.shared.downloadArticles { [weak self] (result) in
             guard let self = self else { return }
             
@@ -38,6 +67,7 @@ class MainViewVC: UIViewController {
                 self.article = articles
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
+                    self.removeLoadingSpinner()
                 }
                 
             case .failure(let error):
@@ -57,7 +87,12 @@ extension MainViewVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Article")
+        
+        var cell = tableView.dequeueReusableCell(withIdentifier: MainViewVC.reuseID, for: indexPath)
+        
+        if cell.detailTextLabel == nil {
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: MainViewVC.reuseID)
+        }
         
         cell.textLabel?.text = article?.items[indexPath.row].title
         cell.detailTextLabel?.text = article?.items[indexPath.row].abstract
@@ -66,5 +101,20 @@ extension MainViewVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = DetailViewVC()
+        //        detailVC.articleLabel.text = article?.items[indexPath.row].title
+        //        detailVC.abstractLabel.text = article?.items[indexPath.row].abstract
+        //        NetworkManager.shared.downloadImage(from: article?.items[indexPath.row].thumbnail ?? "") { (image) in
+        //            DispatchQueue.main.async {
+        //                detailVC.imageArticle.image = image
+        //                self.tableView.reloadData()
+        //            }
+        //        }
+        
+        guard let article = article else { return }
+        detailVC.setArticle(article.items[indexPath.row])
+        detailVC.imageArticle.downloadThumbnail(article.items[indexPath.row])
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }

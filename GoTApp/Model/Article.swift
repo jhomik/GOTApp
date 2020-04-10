@@ -13,9 +13,12 @@ struct Article: Codable {
     var title: String
     var thumbnail: String?
     var abstract: String
+    var url: String
+    
 }
 
 struct ArticleResponse: Codable {
     
+    var basepath: String
     var items: [Article]
 }
