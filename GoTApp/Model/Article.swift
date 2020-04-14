@@ -18,6 +18,5 @@ struct Article: Codable {
 
 struct ArticleResponse: Codable {
     
-    var basepath: String
     var items: [Article]
 }

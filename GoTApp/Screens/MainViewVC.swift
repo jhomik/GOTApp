@@ -129,7 +129,7 @@ extension MainViewVC: UITableViewDelegate, UITableViewDataSource {
 extension MainViewVC: detailVCDelegate {
     func didTapFullArticleButton(url: Article) {
         
-        guard let basepath = article?.basepath else { return }
+        let basepath = "https://gameofthrones.fandom.com"
         
         guard let url = URL(string: basepath + url.url) else { return }
         presentSafariVC(with: url)
