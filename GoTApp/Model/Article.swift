@@ -14,7 +14,6 @@ struct Article: Codable {
     var thumbnail: String?
     var abstract: String
     var url: String
-    
 }
 
 struct ArticleResponse: Codable {

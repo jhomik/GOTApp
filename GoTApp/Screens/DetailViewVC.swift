@@ -9,38 +9,42 @@
 import UIKit
 import SafariServices
 
+protocol detailVCDelegate: class {
+    func didTapFullArticleButton(url: Article)
+}
+
 class DetailViewVC: UIViewController {
     
     let articleLabel = GoTLabel(textAlignment: .center, fontSize: 24)
     let imageArticle = GoTImageThumbnail(frame: .zero)
     let abstractLabel = GoTLabel(textAlignment: .center, fontSize: 16)
     let safariButton = UIButton()
+    var url: Article!
     
+    weak var delegate: detailVCDelegate!
+    
+    init(url: Article) {
+        self.url = url
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        configureNavBar()
         configureUI()
         configureSafariButton()
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = false
-    }
-    
-    func presentSafariVC() {
-        guard let url = URL(string: "https://gameofthrones.fandom.com)") else { return }
-
-        let safariVC = SFSafariViewController(url: url)
-        present(safariVC, animated: true)
-    }
-    
-    func setArticle(_ article: Article) {
-        articleLabel.text = article.title
-        abstractLabel.text = article.abstract
-    }
+    //    func setArticle(_ article: Article) {
+    //        articleLabel.text = article.title
+    //        abstractLabel.text = article.abstract
+    //    }
     
     private func configureSafariButton() {
         safariButton.setTitle("Go to full article", for: .normal)
@@ -51,8 +55,28 @@ class DetailViewVC: UIViewController {
     }
     
     @objc func safariVC() {
-        presentSafariVC()
+        dismiss(animated: true) {
+            self.delegate.didTapFullArticleButton(url: self.url)
+        }
+    }
+    
+    private func configureNavBar() {
+        view.backgroundColor = .systemBackground
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addToFavorites))
+    }
+    
+    @objc func addToFavorites() {
         
+        print("button tapped")
+        
+//        NetworkManager.shared.getArticleInfo(withURL: url.url) { (result) in
+//            switch result { termin
+//            case .success(let favorites):
+//                print(favorites)
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
     }
     
     private func configureUI() {

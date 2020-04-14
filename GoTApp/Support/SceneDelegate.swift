@@ -16,12 +16,32 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let mainViewVC = UINavigationController(rootViewController: MainViewVC())
+//        let mainViewVC = UINavigationController(rootViewController: MainViewVC())
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = mainViewVC
+        window?.rootViewController = TabBarController()
         window?.makeKeyAndVisible()
+    }
+    
+    func MainVCNavigationController() -> UINavigationController {
+        let mainVC = MainViewVC()
+        mainVC.title = "Articles"
+        mainVC.tabBarItem = UITabBarItem(tabBarSystemItem: .mostRecent, tag: 0)
+        return UINavigationController(rootViewController: mainVC)
+    }
+    
+    func FavoritesVCNavigationController() -> UINavigationController {
+        let favoritesVC = FavoritesVC()
+        favoritesVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        return UINavigationController(rootViewController: favoritesVC)
+    }
+    
+    func TabBarController() -> UITabBarController {
+        let tabBar = UITabBarController()
+        tabBar.viewControllers = [MainVCNavigationController(), FavoritesVCNavigationController()]
+        
+        return tabBar
     }
         
     

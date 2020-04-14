@@ -21,7 +21,6 @@ class MainViewVC: UIViewController {
         super.viewDidLoad()
         configureTableView()
         downloadArticles()
-        title = "Articles"
         
     }
     
@@ -102,19 +101,37 @@ extension MainViewVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = DetailViewVC()
-        //        detailVC.articleLabel.text = article?.items[indexPath.row].title
-        //        detailVC.abstractLabel.text = article?.items[indexPath.row].abstract
-        //        NetworkManager.shared.downloadImage(from: article?.items[indexPath.row].thumbnail ?? "") { (image) in
-        //            DispatchQueue.main.async {
-        //                detailVC.imageArticle.image = image
-        //                self.tableView.reloadData()
-        //            }
-        //        }
         
         guard let article = article else { return }
-        detailVC.setArticle(article.items[indexPath.row])
+        let detailVC = DetailViewVC(url: article.items[indexPath.row])
+        
+        detailVC.articleLabel.text = article.items[indexPath.row].title
+        detailVC.abstractLabel.text = article.items[indexPath.row].abstract
+        
+        
+//        NetworkManager.shared.downloadImage(from: article.items[indexPath.row].thumbnail ?? "") { [weak self, weak detailVC] (image) in
+//                    DispatchQueue.main.async {
+//                        detailVC?.imageArticle.image = image
+//                        self?.tableView.reloadData()
+//                    }
+//                }
+        
+//        detailVC.setArticle(article.items[indexPath.row])
+        
+        
+        detailVC.delegate = self
         detailVC.imageArticle.downloadThumbnail(article.items[indexPath.row])
-        navigationController?.pushViewController(detailVC, animated: true)
+        let modalDetailVC = UINavigationController(rootViewController: detailVC)
+        present(modalDetailVC, animated: true)
+    }
+}
+
+extension MainViewVC: detailVCDelegate {
+    func didTapFullArticleButton(url: Article) {
+        
+        guard let basepath = article?.basepath else { return }
+        
+        guard let url = URL(string: basepath + url.url) else { return }
+        presentSafariVC(with: url)
     }
 }

@@ -79,4 +79,41 @@ class NetworkManager {
         }
         task.resume()
     }
+    
+    func getArticleInfo(withURL: String, completion: @escaping (Result<ArticleResponse, Error>) -> Void) {
+        
+        let baseURL = "https://gameofthrones.fandom.com"
+        
+        guard let url = URL(string: baseURL + withURL) else {
+            completion(.failure(GoTError.invalidURL))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data else {
+                completion(.failure(GoTError.invalidData))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completion(.failure(GoTError.invalidResponse))
+                return
+            }
+            
+            if let _ = error {
+                completion(.failure(GoTError.invalidResponse))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let result = try decoder.decode(ArticleResponse.self, from: data)
+                completion(.success(result))
+            } catch {
+                completion(.failure(GoTError.invalidData))
+            }
+            
+        }
+        task.resume()
+    }
 }

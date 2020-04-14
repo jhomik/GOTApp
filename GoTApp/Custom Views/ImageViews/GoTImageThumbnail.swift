@@ -27,9 +27,9 @@ class GoTImageThumbnail: UIImageView {
     
     func downloadThumbnail(_ article: Article) {
         guard let article = article.thumbnail else { return }
-        NetworkManager.shared.downloadImage(from: article) { (image) in
+        NetworkManager.shared.downloadImage(from: article) { [weak self] (image) in
             DispatchQueue.main.async {
-                self.image = image
+                self?.image = image
             }
         }
     }
