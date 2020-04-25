@@ -9,16 +9,35 @@
 import UIKit
 
 class GoTCustomCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    static let reuseID = "Article"
+    
+    let favoriteButton = UIButton(type: .system)
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupFavoriteStarButton()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-
+    
+    func setupCell(_ article: Article?) {
+        textLabel?.text = article?.title
+        detailTextLabel?.text = article?.abstract
+        detailTextLabel?.numberOfLines = 2
+    }
+    
+    func setupFavoriteStarButton() {
+        favoriteButton.setImage(UIImage(named: "favoriteStar"), for: .normal)
+        favoriteButton.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
+        favoriteButton.addTarget(self, action: #selector(favoriteStarTapped), for: .touchUpInside)
+        
+        accessoryView = favoriteButton
+    }
+    
+    @objc func favoriteStarTapped() {
+        favoriteButton.tintColor = .systemYellow
+    }
 }

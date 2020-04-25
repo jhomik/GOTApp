@@ -10,18 +10,19 @@ import UIKit
 
 class MainViewVC: UIViewController {
     
-    static let reuseID = "Article"
+    let defaults = UserDefaults.standard
+    let keys = "favorites"
     
     var tableView = UITableView()
     var article: ArticleResponse?
     var spinner = UIActivityIndicatorView(style: .large)
+    var isFavorite = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
         downloadArticles()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,10 +54,10 @@ class MainViewVC: UIViewController {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Article")
+        tableView.register(GoTCustomCell.self, forCellReuseIdentifier: GoTCustomCell.reuseID)
     }
     
-    func downloadArticles() {
+    private func downloadArticles() {
         showLoadingSpinner()
         NetworkManager.shared.downloadArticles { [weak self] (result) in
             guard let self = self else { return }
@@ -76,7 +77,6 @@ class MainViewVC: UIViewController {
     }
 }
 
-
 extension MainViewVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -87,15 +87,13 @@ extension MainViewVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCell(withIdentifier: MainViewVC.reuseID, for: indexPath)
+        var cell = tableView.dequeueReusableCell(withIdentifier: GoTCustomCell.reuseID, for: indexPath) as! GoTCustomCell
         
         if cell.detailTextLabel == nil {
-            cell = UITableViewCell(style: .subtitle, reuseIdentifier: MainViewVC.reuseID)
+            cell = GoTCustomCell(style: .subtitle, reuseIdentifier: GoTCustomCell.reuseID)
         }
         
-        cell.textLabel?.text = article?.items[indexPath.row].title
-        cell.detailTextLabel?.text = article?.items[indexPath.row].abstract
-        cell.detailTextLabel?.numberOfLines = 2
+        cell.setupCell(article?.items[indexPath.row])
         
         return cell
     }
@@ -103,35 +101,7 @@ extension MainViewVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         guard let article = article else { return }
-        let detailVC = DetailViewVC(url: article.items[indexPath.row])
-        
-        detailVC.articleLabel.text = article.items[indexPath.row].title
-        detailVC.abstractLabel.text = article.items[indexPath.row].abstract
-        
-        
-//        NetworkManager.shared.downloadImage(from: article.items[indexPath.row].thumbnail ?? "") { [weak self, weak detailVC] (image) in
-//                    DispatchQueue.main.async {
-//                        detailVC?.imageArticle.image = image
-//                        self?.tableView.reloadData()
-//                    }
-//                }
-        
-//        detailVC.setArticle(article.items[indexPath.row])
-        
-        
-        detailVC.delegate = self
-        detailVC.imageArticle.downloadThumbnail(article.items[indexPath.row])
-        let modalDetailVC = UINavigationController(rootViewController: detailVC)
-        present(modalDetailVC, animated: true)
-    }
-}
-
-extension MainViewVC: detailVCDelegate {
-    func didTapFullArticleButton(url: Article) {
-        
-        let basepath = "https://gameofthrones.fandom.com"
-        
-        guard let url = URL(string: basepath + url.url) else { return }
-        presentSafariVC(with: url)
+        let detailVC = DetailViewVC(article: article.items[indexPath.row])
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }

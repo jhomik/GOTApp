@@ -11,6 +11,8 @@ import UIKit
 class FavoritesVC: UIViewController {
     
     var tableView = UITableView()
+    var favoritesArticle: [String] = []
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +27,7 @@ class FavoritesVC: UIViewController {
 
 extension FavoritesVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return favoritesArticle.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

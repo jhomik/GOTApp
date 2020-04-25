@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A3732242451BFB700B17D85 /* GoTCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3732232451BFB700B17D85 /* GoTCustomCell.swift */; };
 		5A81D0892445DCCD006C50BF /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A81D0882445DCCD006C50BF /* FavoritesVC.swift */; };
 		5AFF4315243CC94B00877590 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF4314243CC94B00877590 /* AppDelegate.swift */; };
 		5AFF4317243CC94B00877590 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF4316243CC94B00877590 /* SceneDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A3732232451BFB700B17D85 /* GoTCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoTCustomCell.swift; sourceTree = "<group>"; };
 		5A81D0882445DCCD006C50BF /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
 		5AFF4311243CC94B00877590 /* GoTApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoTApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AFF4314243CC94B00877590 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A3732222451BEDA00B17D85 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5A3732232451BFB700B17D85 /* GoTCustomCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		5AFF4308243CC94B00877590 = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +140,7 @@
 		5AFF4337243DF61300877590 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				5A3732222451BEDA00B17D85 /* Cell */,
 				5AFF4346243E417300877590 /* ImageViews */,
 				5AFF4338243DF61D00877590 /* Labels */,
 			);
@@ -237,6 +248,7 @@
 				5AFF4342243E2A0C00877590 /* UIViewController+Ext.swift in Sources */,
 				5AFF4315243CC94B00877590 /* AppDelegate.swift in Sources */,
 				5AFF433A243DFAA200877590 /* GoTLabel.swift in Sources */,
+				5A3732242451BFB700B17D85 /* GoTCustomCell.swift in Sources */,
 				5AFF432D243CCCAC00877590 /* DetailViewVC.swift in Sources */,
 				5AFF432B243CCBAA00877590 /* MainViewVC.swift in Sources */,
 				5AFF4317243CC94B00877590 /* SceneDelegate.swift in Sources */,

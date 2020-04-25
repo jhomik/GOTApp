@@ -13,6 +13,7 @@ extension UIViewController {
     
     func presentSafariVC(with url: URL) {
         let safariVC = SFSafariViewController(url: url)
+        safariVC.modalPresentationStyle = .popover
         present(safariVC, animated: true)
     }
 }

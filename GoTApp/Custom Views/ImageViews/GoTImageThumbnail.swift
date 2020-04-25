@@ -25,9 +25,8 @@ class GoTImageThumbnail: UIImageView {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func downloadThumbnail(_ article: Article) {
-        guard let article = article.thumbnail else { return }
-        NetworkManager.shared.downloadImage(from: article) { [weak self] (image) in
+    func downloadThumbnail(_ link: String) {
+        NetworkManager.shared.downloadImage(from: link) { [weak self] (image) in
             DispatchQueue.main.async {
                 self?.image = image
             }
