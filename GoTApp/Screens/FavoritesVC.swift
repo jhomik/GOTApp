@@ -13,16 +13,28 @@ class FavoritesVC: UIViewController {
     var tableView = UITableView()
     var favoritesArticle: [String] = []
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureTableView()
+        
+        ArticleManager.retrieveFavorites { (result) in
+            switch result {
+            case .success(let favorites):
+                print(favorites)
+            case .failure(let error):
+                break
+            }
+        }
+    }
+    
+    func configureTableView() {
         tableView = UITableView(frame: view.bounds)
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ArticleFavorites")
     }
-
 }
 
 extension FavoritesVC: UITableViewDataSource, UITableViewDelegate {

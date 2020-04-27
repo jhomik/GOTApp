@@ -39,5 +39,6 @@ class GoTCustomCell: UITableViewCell {
     
     @objc func favoriteStarTapped() {
         favoriteButton.tintColor = .systemYellow
+        
     }
 }

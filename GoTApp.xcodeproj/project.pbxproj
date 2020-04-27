@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A3732242451BFB700B17D85 /* GoTCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3732232451BFB700B17D85 /* GoTCustomCell.swift */; };
+		5A3732262455917A00B17D85 /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3732252455917A00B17D85 /* ArticleManager.swift */; };
 		5A81D0892445DCCD006C50BF /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A81D0882445DCCD006C50BF /* FavoritesVC.swift */; };
 		5AFF4315243CC94B00877590 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF4314243CC94B00877590 /* AppDelegate.swift */; };
 		5AFF4317243CC94B00877590 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF4316243CC94B00877590 /* SceneDelegate.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		5A3732232451BFB700B17D85 /* GoTCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoTCustomCell.swift; sourceTree = "<group>"; };
+		5A3732252455917A00B17D85 /* ArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
 		5A81D0882445DCCD006C50BF /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
 		5AFF4311243CC94B00877590 /* GoTApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoTApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AFF4314243CC94B00877590 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				5AFF4332243CD31C00877590 /* NetworkManager.swift */,
+				5A3732252455917A00B17D85 /* ArticleManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				5AFF4315243CC94B00877590 /* AppDelegate.swift in Sources */,
 				5AFF433A243DFAA200877590 /* GoTLabel.swift in Sources */,
 				5A3732242451BFB700B17D85 /* GoTCustomCell.swift in Sources */,
+				5A3732262455917A00B17D85 /* ArticleManager.swift in Sources */,
 				5AFF432D243CCCAC00877590 /* DetailViewVC.swift in Sources */,
 				5AFF432B243CCBAA00877590 /* MainViewVC.swift in Sources */,
 				5AFF4317243CC94B00877590 /* SceneDelegate.swift in Sources */,
