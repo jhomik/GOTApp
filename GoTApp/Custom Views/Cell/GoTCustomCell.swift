@@ -10,35 +10,55 @@ import UIKit
 
 class GoTCustomCell: UITableViewCell {
     
+        var article: Article? {
+            didSet {
+                refreshViews()
+                setupFavoriteStarButton()
+            }
+        }
+    
     static let reuseID = "Article"
     
     let favoriteButton = UIButton(type: .system)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupFavoriteStarButton()
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     
-    func setupCell(_ article: Article?) {
+    private func refreshViews() {
         textLabel?.text = article?.title
         detailTextLabel?.text = article?.abstract
         detailTextLabel?.numberOfLines = 2
     }
     
-    func setupFavoriteStarButton() {
-        favoriteButton.setImage(UIImage(named: "favoriteStar"), for: .normal)
+    private func setupFavoriteStarButton() {
+        let blueStar = UIImage(systemName: "star")!
+//            .withTintColor(.systemBlue)
+//            .withRenderingMode(.alwaysOriginal)
+        let favoriteStar = UIImage(systemName: "star.fill")!
+//            .withTintColor(.systemYellow)
+//            .withRenderingMode(.alwaysOriginal)
+        
+        favoriteButton.setImage(blueStar, for: .normal)
         favoriteButton.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
         favoriteButton.addTarget(self, action: #selector(favoriteStarTapped), for: .touchUpInside)
         
         accessoryView = favoriteButton
     }
     
-    @objc func favoriteStarTapped() {
-        favoriteButton.tintColor = .systemYellow
-        
+    private func updateFavorite() {
+        guard let article = article else { return }
+        ArticleManager.save(favorites: article)
+    }
+    
+    @objc private func favoriteStarTapped() {
+        setupFavoriteStarButton()
+        updateFavorite()
     }
 }

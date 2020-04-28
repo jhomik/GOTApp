@@ -11,7 +11,7 @@ import UIKit
 class FavoritesVC: UIViewController {
     
     var tableView = UITableView()
-    var favoritesArticle: [String] = []
+    var favoritesArticle: [Article] = []
     
     
     override func viewDidLoad() {
@@ -21,9 +21,10 @@ class FavoritesVC: UIViewController {
         ArticleManager.retrieveFavorites { (result) in
             switch result {
             case .success(let favorites):
+                self.favoritesArticle = favorites
                 print(favorites)
             case .failure(let error):
-                break
+                print(error)
             }
         }
     }
@@ -45,7 +46,7 @@ extension FavoritesVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleFavorites", for: indexPath)
-        cell.textLabel?.text = "test"
+        cell.textLabel?.text = favoritesArticle[indexPath.row].title
         
         return cell
     }

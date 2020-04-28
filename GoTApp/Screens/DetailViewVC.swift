@@ -71,15 +71,6 @@ class DetailViewVC: UIViewController {
     @objc func addToFavorites() {
         
         print("button tapped")
-        
-        //        NetworkManager.shared.getArticleInfo(withURL: url.url) { (result) in
-        //            switch result { termin
-        //            case .success(let favorites):
-        //                print(favorites)
-        //            case .failure(let error):
-        //                print(error.localizedDescription)
-        //            }
-        //        }
     }
     
     private func configureUI() {

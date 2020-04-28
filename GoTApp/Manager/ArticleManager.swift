@@ -16,19 +16,19 @@ class ArticleManager {
         static let favorites = "favorites"
     }
     
-    static func retrieveFavorites(completion: @escaping (Result<Article, GoTError>) -> Void) {
+    static func retrieveFavorites(completion: @escaping (Result<[Article], GoTError>) -> Void) {
         guard let favoritesData = defaults.object(forKey: Keys.favorites) as? Data else { return }
         
         do {
             let decoder = JSONDecoder()
-            let favorites = try decoder.decode(Article.self, from: favoritesData)
+            let favorites = try decoder.decode([Article].self, from: favoritesData)
             completion(.success(favorites))
         } catch {
             completion(.failure(GoTError.invalidData))
         }
     }
     
-    static func save(favorites: Article) -> GoTError? {
+    @discardableResult static func save(favorites: Article) -> GoTError? {
         do {
             let encoder = JSONEncoder()
             let saveFavorites = try encoder.encode(favorites)

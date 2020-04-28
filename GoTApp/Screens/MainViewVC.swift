@@ -87,13 +87,12 @@ extension MainViewVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCell(withIdentifier: GoTCustomCell.reuseID, for: indexPath) as! GoTCustomCell
-        
-        if cell.detailTextLabel == nil {
-            cell = GoTCustomCell(style: .subtitle, reuseIdentifier: GoTCustomCell.reuseID)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: GoTCustomCell.reuseID, for: indexPath) as? GoTCustomCell else {
+            return UITableViewCell()
         }
+       
         
-        cell.setupCell(article?.items[indexPath.row])
+        cell.article = article?.items[indexPath.row]
         
         return cell
     }
