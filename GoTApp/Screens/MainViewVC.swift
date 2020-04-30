@@ -16,7 +16,6 @@ class MainViewVC: UIViewController {
     var tableView = UITableView()
     var article: ArticleResponse?
     var spinner = UIActivityIndicatorView(style: .large)
-    var isFavorite = false
     
     
     override func viewDidLoad() {

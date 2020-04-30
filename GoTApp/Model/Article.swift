@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Article: Codable {
+struct Article: Codable, Equatable {
     
     let title: String
     let thumbnail: String?
