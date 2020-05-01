@@ -59,11 +59,11 @@ class GoTCustomCell: UITableViewCell {
         guard let article = article else { return }
         
         isFavorite = bool
+        print(isFavorite)
+        print(bool)
         
-        let unfavoriteStar = UIImage(systemName: "star")!
-            .withTintColor(.systemBlue)
-        let favoriteStar = UIImage(systemName: "star.fill")!
-            .withTintColor(.systemYellow)
+        let unfavoriteStar = UIImage(systemName: "star")
+        let favoriteStar = UIImage(systemName: "star.fill")
         
         if bool {
             favoriteButton.setImage(favoriteStar, for: .normal)

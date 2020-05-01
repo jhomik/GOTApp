@@ -10,9 +10,6 @@ import UIKit
 
 class MainViewVC: UIViewController {
     
-    let defaults = UserDefaults.standard
-    let keys = "favorites"
-    
     var tableView = UITableView()
     var article: ArticleResponse?
     var spinner = UIActivityIndicatorView(style: .large)
@@ -22,6 +19,7 @@ class MainViewVC: UIViewController {
         super.viewDidLoad()
         configureTableView()
         downloadArticles()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
