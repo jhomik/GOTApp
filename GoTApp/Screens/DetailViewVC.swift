@@ -7,24 +7,17 @@
 //
 
 import UIKit
-import SafariServices
-
-protocol detailVCDelegate: class {
-    func didTapFullArticleButton(url: Article)
-}
 
 class DetailViewVC: UIViewController {
     
-    let articleLabel = GoTLabel(textAlignment: .center, fontSize: 24)
-    let imageArticle = GoTImageThumbnail(frame: .zero)
-    let abstractLabel = GoTLabel(textAlignment: .center, fontSize: 16)
-    let safariButton = UIButton()
-    var url: Article!
+    private let articleLabel = GoTLabel(textAlignment: .center, fontSize: 24)
+    private let imageArticle = GoTImageThumbnail(frame: .zero)
+    private let abstractLabel = GoTLabel(textAlignment: .center, fontSize: 16)
+    private let safariButton = UIButton()
+    var article: Article?
     
-    weak var delegate: detailVCDelegate!
-    
-    init(url: Article) {
-        self.url = url
+    init(article: Article) {
+        self.article = article
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -33,18 +26,27 @@ class DetailViewVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavBar()
         configureUI()
         configureSafariButton()
+        setup()
         
     }
     
-    //    func setArticle(_ article: Article) {
-    //        articleLabel.text = article.title
-    //        abstractLabel.text = article.abstract
-    //    }
+    private func setup() {
+        self.articleLabel.text = self.article?.title
+        self.abstractLabel.text = self.article?.abstract
+        
+        guard let link = article?.thumbnail else { return }
+        self.imageArticle.downloadThumbnail(link)
+    }
     
     private func configureSafariButton() {
         safariButton.setTitle("Go to full article", for: .normal)
@@ -54,10 +56,11 @@ class DetailViewVC: UIViewController {
         safariButton.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    @objc func safariVC() {
-        dismiss(animated: true) {
-            self.delegate.didTapFullArticleButton(url: self.url)
-        }
+    @objc private func safariVC() {
+        let basepath = "https://gameofthrones.fandom.com"
+        
+        guard let link = article?.url, let url = URL(string: basepath + link) else { return }
+        presentSafariVC(with: url)
     }
     
     private func configureNavBar() {
@@ -68,15 +71,6 @@ class DetailViewVC: UIViewController {
     @objc func addToFavorites() {
         
         print("button tapped")
-        
-//        NetworkManager.shared.getArticleInfo(withURL: url.url) { (result) in
-//            switch result { termin
-//            case .success(let favorites):
-//                print(favorites)
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
     }
     
     private func configureUI() {

@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct Article: Codable {
+struct Article: Codable, Equatable {
     
-    var title: String
-    var thumbnail: String?
-    var abstract: String
-    var url: String
+    let title: String
+    let thumbnail: String?
+    let abstract: String
+    let url: String
 }
 
 struct ArticleResponse: Codable {
