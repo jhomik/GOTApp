@@ -52,32 +52,36 @@ class GoTCustomCell: UITableViewCell {
     }
     
     @objc private func favoriteStarTapped() {
-        updateFavorite(bool: !isFavorite)
+        updateFavorite()
     }
     
-    func setFavoriteImage() {
+    private func updateFavorite() {
+        isFavorite = !isFavorite
+
+        print(isFavorite)
+
+        setFavoriteImage()
+        
+        isFavorite ? saveFavourite() : removeFavourite()
+    }
+
+    private func saveFavourite() {
+        guard let article = article else { return }
+        ArticleManager.shared.save(favorites: article) { (error) in
+            print(GoTError.invalidData)
+        }
+    }
+
+    private func removeFavourite() {
+        guard let article = article else { return }
+        ArticleManager.shared.remove(favorites: article) { (error) in
+            print(GoTError.invalidData)
+        }
+    }
+
+    private func setFavoriteImage() {
         let unfavoriteStar = UIImage(systemName: "star")
         let favoriteStar = UIImage(systemName: "star.fill")
         favoriteButton.setImage(isFavorite ? favoriteStar : unfavoriteStar, for: .normal)
-    }
-    
-    private func updateFavorite(bool: Bool) {
-        guard let article = article else { return }
-        
-        isFavorite = bool
-        print(isFavorite)
-        print(bool)
-        
-        if bool {
-            setFavoriteImage()
-            ArticleManager.shared.save(favorites: article) { (error) in
-                print(GoTError.invalidData)
-            }
-        } else {
-            setFavoriteImage()
-            ArticleManager.shared.remove(favorites: article) { (error) in
-                print(GoTError.invalidData)
-            }
-        }
     }
 }
