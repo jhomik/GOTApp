@@ -24,13 +24,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         
         self.mvvmStart(window: window)
-        
+//        self.mvcStart(window: window)
     }
     
     func mvvmStart(window: UIWindow) {
         let coordinator = MainCoordinator(window: window, tabBarController: TabBarController())
-        let viewController = MainTableViewController()
-        coordinator.start(with: [viewController])
+        coordinator.start()
         self.coordinator = coordinator
     }
     

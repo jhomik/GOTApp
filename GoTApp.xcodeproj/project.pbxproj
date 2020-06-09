@@ -28,6 +28,8 @@
 		FC93B02F248FE3E60035EEB8 /* MVVM_C.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC93B027248FE3E60035EEB8 /* MVVM_C.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FC93B036248FE4270035EEB8 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93B035248FE4270035EEB8 /* MainCoordinator.swift */; };
 		FC93B03A248FE5CD0035EEB8 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93B039248FE5CD0035EEB8 /* MainTableViewController.swift */; };
+		FC93B03D248FE6F60035EEB8 /* GoTCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93B03C248FE6F60035EEB8 /* GoTCell.swift */; };
+		FC93B041248FE81B0035EEB8 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93B040248FE81B0035EEB8 /* ArticleModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,8 @@
 		FC93B02A248FE3E60035EEB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC93B035248FE4270035EEB8 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		FC93B039248FE5CD0035EEB8 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		FC93B03C248FE6F60035EEB8 /* GoTCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoTCell.swift; sourceTree = "<group>"; };
+		FC93B040248FE81B0035EEB8 /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +228,8 @@
 		FC93B028248FE3E60035EEB8 /* MVVM-C */ = {
 			isa = PBXGroup;
 			children = (
+				FC93B03F248FE8120035EEB8 /* Model */,
+				FC93B03E248FE7F30035EEB8 /* ViewModel */,
 				FC93B037248FE57E0035EEB8 /* Controllers */,
 				FC93B034248FE3FC0035EEB8 /* Coordinator */,
 				FC93B029248FE3E60035EEB8 /* MVVM_C.h */,
@@ -252,8 +258,32 @@
 			isa = PBXGroup;
 			children = (
 				FC93B039248FE5CD0035EEB8 /* MainTableViewController.swift */,
+				FC93B03B248FE6D40035EEB8 /* View */,
 			);
 			path = "Main Controller";
+			sourceTree = "<group>";
+		};
+		FC93B03B248FE6D40035EEB8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FC93B03C248FE6F60035EEB8 /* GoTCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FC93B03E248FE7F30035EEB8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FC93B03F248FE8120035EEB8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FC93B040248FE81B0035EEB8 /* ArticleModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,6 +422,8 @@
 			files = (
 				FC93B03A248FE5CD0035EEB8 /* MainTableViewController.swift in Sources */,
 				FC93B036248FE4270035EEB8 /* MainCoordinator.swift in Sources */,
+				FC93B041248FE81B0035EEB8 /* ArticleModel.swift in Sources */,
+				FC93B03D248FE6F60035EEB8 /* GoTCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

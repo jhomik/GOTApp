@@ -18,8 +18,8 @@ public final class MainCoordinator {
         self.tabBarController = tabBarController
     }
     
-    public func start(with childControllers: [UIViewController]) {
-        self.tabBarController.setViewControllers(childControllers, animated: false)
+    public func start() {
+        self.tabBarController.setViewControllers([MainTableViewController()], animated: false)
         self.window.rootViewController = self.tabBarController
         self.window.makeKeyAndVisible()
     }
