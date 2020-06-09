@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ArticleModel: Codable, Equatable {
+struct Article: Codable, Equatable {
     
     let title: String
     let thumbnail: String?
@@ -17,5 +17,5 @@ struct ArticleModel: Codable, Equatable {
 }
 
 struct ArticleResponse: Codable {
-    var items: ArticleModel
+    var items: [Article]
 }

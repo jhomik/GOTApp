@@ -18,7 +18,7 @@ class GoTCell: UITableViewCell {
     private var favoriteButton = UIButton(type: .system)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         self.setupUI()
     }
     
@@ -32,8 +32,11 @@ class GoTCell: UITableViewCell {
     }
     
     private func setupUI() {
+        self.detailTextLabel?.numberOfLines = 0
         self.selectionStyle = .none
         self.contentView.addSubview(self.favoriteButton)
+        self.favoriteButton.translatesAutoresizingMaskIntoConstraints = false
+        self.favoriteButton.addTarget(self, action: #selector(self.favoriteAction), for: .touchUpInside)
         self.contentView.addConstraints([
             self.favoriteButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 8),
             self.favoriteButton.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
@@ -55,6 +58,10 @@ class GoTCell: UITableViewCell {
         let unfavoriteStar = UIImage(systemName: "star")
         let favoriteStar = UIImage(systemName: "star.fill")
         self.favoriteButton.setImage(isFavorited ? favoriteStar : unfavoriteStar, for: .normal)
+    }
+    
+    @objc func favoriteAction() {
+        self.viewModel?.setFavorite()
     }
     
 }

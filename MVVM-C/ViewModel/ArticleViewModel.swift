@@ -12,7 +12,7 @@ import Foundation
 
 final class ArticleViewModel {
     
-    private let model: ArticleModel
+    private let model: Article
     
     typealias FavoriteObserver = ((Bool) -> Void)
     var onFavorite = [NSObject: FavoriteObserver]()
@@ -32,17 +32,13 @@ final class ArticleViewModel {
         }
     }
     
-    init(model: ArticleModel, isFavorited: Bool) {
+    init(model: Article, isFavorited: Bool) {
         self.model = model
         self.isFavorited = isFavorited
     }
     
-    func favorite() {
-        self.isFavorited = false
-    }
-    
-    func unfavorite() {
-        self.isFavorited = false
+    func setFavorite() {
+        self.isFavorited.toggle()
     }
     
 }
