@@ -7,21 +7,36 @@
 //
 
 import UIKit
+import MVVM_C
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    var coordinator: MainCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
 //        let mainViewVC = UINavigationController(rootViewController: MainViewVC())
         
-        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window?.windowScene = windowScene
-        window?.rootViewController = TabBarController()
-        window?.makeKeyAndVisible()
+        let window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window.windowScene = windowScene
+        self.window = window
+        
+        self.mvvmStart(window: window)
+        
+    }
+    
+    func mvvmStart(window: UIWindow) {
+        let coordinator = MainCoordinator(window: window, tabBarController: TabBarController())
+        let viewController = MainTableViewController()
+        coordinator.start(with: [viewController])
+        self.coordinator = coordinator
+    }
+    
+    func mvcStart(window: UIWindow) {
+        window.rootViewController = TabBarController()
+        window.makeKeyAndVisible()
     }
     
     func MainVCNavigationController() -> UINavigationController {
