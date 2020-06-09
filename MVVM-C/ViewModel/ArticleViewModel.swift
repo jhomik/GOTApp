@@ -24,7 +24,7 @@ final class ArticleViewModel {
         return self.model.abstract
     }
     
-    private var isFavorited: Bool {
+    private(set) var isFavorited: Bool {
         didSet {
             self.onFavorite.keys.forEach { key in
                 self.onFavorite[key]?(self.isFavorited)
