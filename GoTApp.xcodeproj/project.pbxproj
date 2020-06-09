@@ -30,6 +30,7 @@
 		FC93B03A248FE5CD0035EEB8 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93B039248FE5CD0035EEB8 /* MainTableViewController.swift */; };
 		FC93B03D248FE6F60035EEB8 /* GoTCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93B03C248FE6F60035EEB8 /* GoTCell.swift */; };
 		FC93B041248FE81B0035EEB8 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93B040248FE81B0035EEB8 /* ArticleModel.swift */; };
+		FC93B043248FE86B0035EEB8 /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93B042248FE86B0035EEB8 /* ArticleViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		FC93B039248FE5CD0035EEB8 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		FC93B03C248FE6F60035EEB8 /* GoTCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoTCell.swift; sourceTree = "<group>"; };
 		FC93B040248FE81B0035EEB8 /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
+		FC93B042248FE86B0035EEB8 /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +276,7 @@
 		FC93B03E248FE7F30035EEB8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				FC93B042248FE86B0035EEB8 /* ArticleViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				FC93B03A248FE5CD0035EEB8 /* MainTableViewController.swift in Sources */,
 				FC93B036248FE4270035EEB8 /* MainCoordinator.swift in Sources */,
 				FC93B041248FE81B0035EEB8 /* ArticleModel.swift in Sources */,
+				FC93B043248FE86B0035EEB8 /* ArticleViewModel.swift in Sources */,
 				FC93B03D248FE6F60035EEB8 /* GoTCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
