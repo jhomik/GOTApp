@@ -37,15 +37,11 @@ final class DetailViewVC: UIViewController {
         configureUI()
         configureSafariButton()
         setup()
-        
+        setupViewModel()
     }
     
     private func setup() {
-        self.articleLabel.text = self.viewModel?.title
-        self.abstractLabel.text = self.viewModel?.abstract
-        
-        guard let link = viewModel?.thumbnail else { return }
-        self.imageArticle.downloadThumbnail(link)
+        view.backgroundColor = .systemBackground
     }
     
     private func configureSafariButton() {
@@ -63,14 +59,25 @@ final class DetailViewVC: UIViewController {
         // That should be handled into the coordinator -> presentSafariVC(with: url)
     }
     
+    private func setupViewModel() {
+        self.articleLabel.text = self.viewModel?.title
+        self.abstractLabel.text = self.viewModel?.abstract
+        self.viewModel?.onFavorite[self] = { [weak self] _ in
+            self?.configureNavBar()
+        }
+        self.configureNavBar()
+        
+        guard let link = viewModel?.thumbnail else { return }
+        self.imageArticle.downloadThumbnail(link)
+    }
+    
     private func configureNavBar() {
-        view.backgroundColor = .systemBackground
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addToFavorites))
+        let barButtonSystemItem: UIBarButtonItem.SystemItem = (self.viewModel?.isFavorited == true ? .trash : .add)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: barButtonSystemItem, target: self, action: #selector(addToFavorites))
     }
     
     @objc func addToFavorites() {
-        
-        print("button tapped")
+        self.viewModel?.setFavorite()
     }
     
     private func configureUI() {

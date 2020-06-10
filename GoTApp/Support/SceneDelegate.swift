@@ -25,11 +25,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         self.mvvmStart(window: window)
 //        self.mvcStart(window: window)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            print("Presented Controller")
-            print(self.coordinator?.presentedController)
-        }
     }
     
     func mvvmStart(window: UIWindow) {
