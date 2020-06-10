@@ -28,6 +28,12 @@ final class ArticleViewModel {
     var abstract: String {
         return self.model.abstract
     }
+    var thumbnail: String? {
+        return self.model.thumbnail
+    }
+    var url: String {
+        return self.model.url
+    }
     
     private(set) var isFavorited: Bool {
         didSet {
