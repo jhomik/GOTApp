@@ -24,7 +24,9 @@ public final class MainCoordinator: Coordinator {
     
     public func start() {
         let mainNavigationCoordinator = NavigationCoordinator(navigationController: .init())
-        mainNavigationCoordinator.start(viewController: MainTableViewController())
+        let mainTableController = MainTableViewController()
+        mainNavigationCoordinator.start(viewController: mainTableController)
+        mainTableController.coordinator = mainNavigationCoordinator
         self.children = [mainNavigationCoordinator]
         self.tabBarController.setViewControllers([mainNavigationCoordinator.navigationController], animated: false)
         self.window.rootViewController = self.tabBarController
@@ -46,8 +48,7 @@ final class NavigationCoordinator: Coordinator {
     }
     
     func presentArticleDetails(_ viewModel: ArticleViewModel) {
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .yellow
+        let viewController = DetailViewVC(viewModel: viewModel)
         self.navigationController.pushViewController(viewController, animated: true)
     }
     
