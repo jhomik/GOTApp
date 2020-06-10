@@ -26,7 +26,7 @@ final class MainTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 switch result {
                 case let .success(response):
-                    self?.viewModel = response.items.map { ArticleViewModel(model: $0, isFavorited: false) }
+                    self?.viewModel = response.items.map { ArticleViewModel(model: $0, isFavorited: ArticleManager.shared.articles.contains($0)) }
                 case .failure: break
                 }
             }

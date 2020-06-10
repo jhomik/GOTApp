@@ -10,6 +10,11 @@ import Foundation
 
 // ViewModel: Its responsible for holding the model and formatting it to be displayed to UI component, holding state
 
+/*
+ Model                     <---> ViewModel <---> UI
+ (Article, ArticleManager) <---> ViewModel <---> (GotCell)
+ */
+
 final class ArticleViewModel {
     
     private let model: Article
@@ -39,6 +44,11 @@ final class ArticleViewModel {
     
     func setFavorite() {
         self.isFavorited.toggle()
+        if self.isFavorited {
+            ArticleManager.shared.save(favorites: self.model) { _ in }
+        } else {
+            ArticleManager.shared.remove(favorites: self.model) { _ in }
+        }
     }
     
 }

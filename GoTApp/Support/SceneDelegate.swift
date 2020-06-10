@@ -33,6 +33,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.coordinator = coordinator
     }
     
+    // MARK: - OLD CODE (Should be removed)
+    
     func mvcStart(window: UIWindow) {
         window.rootViewController = TabBarController()
         window.makeKeyAndVisible()
