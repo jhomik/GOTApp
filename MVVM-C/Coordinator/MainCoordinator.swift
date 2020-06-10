@@ -8,9 +8,15 @@
 
 import UIKit
 
-protocol Coordinator { }
+protocol Coordinator {
+    var presentedController: UIViewController? { get }
+}
 
 public final class MainCoordinator: Coordinator {
+    
+    public var presentedController: UIViewController? {
+        return self.children.last?.presentedController ?? self.tabBarController.children[self.tabBarController.selectedIndex]
+    }
     
     var window: UIWindow
     var tabBarController: UITabBarController
@@ -36,6 +42,10 @@ public final class MainCoordinator: Coordinator {
 }
 
 final class NavigationCoordinator: Coordinator {
+    
+    var presentedController: UIViewController? {
+        return self.navigationController.children.last
+    }
     
     var navigationController: UINavigationController
     
