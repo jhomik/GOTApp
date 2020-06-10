@@ -35,14 +35,10 @@ class GoTCell: UITableViewCell {
         self.detailTextLabel?.numberOfLines = 0
         self.selectionStyle = .none
         self.contentView.addSubview(self.favoriteButton)
-        self.favoriteButton.translatesAutoresizingMaskIntoConstraints = false
         self.favoriteButton.addTarget(self, action: #selector(self.favoriteAction), for: .touchUpInside)
-        self.contentView.addConstraints([
-            self.favoriteButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 8),
-            self.favoriteButton.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            self.favoriteButton.heightAnchor.constraint(equalTo: self.favoriteButton.widthAnchor),
-            self.favoriteButton.widthAnchor.constraint(equalToConstant: 44)
-        ])
+        let buttonSize: CGFloat = 44
+        self.favoriteButton.frame = CGRect(origin: .zero, size: .init(width: buttonSize, height: buttonSize))
+        self.accessoryView = self.favoriteButton
     }
     
     private func setupViewModel() {
