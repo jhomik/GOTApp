@@ -34,6 +34,7 @@
 		FC93B046248FED050035EEB8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93B045248FED050035EEB8 /* NetworkManager.swift */; };
 		FC93B048248FED0C0035EEB8 /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93B047248FED0C0035EEB8 /* ArticleManager.swift */; };
 		FCADF5D42497CA3800AACC08 /* GoTLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCADF5D32497CA3800AACC08 /* GoTLabel.swift */; };
+		FCADF5D62497CA7100AACC08 /* GoTImageThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCADF5D52497CA7100AACC08 /* GoTImageThumbnail.swift */; };
 		FCFE16BF24913DE400FD0E40 /* DetailViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFE16BE24913DE400FD0E40 /* DetailViewVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		FC93B045248FED050035EEB8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		FC93B047248FED0C0035EEB8 /* ArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
 		FCADF5D32497CA3800AACC08 /* GoTLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoTLabel.swift; sourceTree = "<group>"; };
+		FCADF5D52497CA7100AACC08 /* GoTImageThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoTImageThumbnail.swift; sourceTree = "<group>"; };
 		FCFE16BE24913DE400FD0E40 /* DetailViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -312,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				FCADF5D32497CA3800AACC08 /* GoTLabel.swift */,
+				FCADF5D52497CA7100AACC08 /* GoTImageThumbnail.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC93B048248FED0C0035EEB8 /* ArticleManager.swift in Sources */,
+				FCADF5D62497CA7100AACC08 /* GoTImageThumbnail.swift in Sources */,
 				FC93B046248FED050035EEB8 /* NetworkManager.swift in Sources */,
 				FC93B03A248FE5CD0035EEB8 /* MainTableViewController.swift in Sources */,
 				FC93B036248FE4270035EEB8 /* MainCoordinator.swift in Sources */,
