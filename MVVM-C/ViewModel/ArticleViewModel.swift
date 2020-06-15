@@ -2,7 +2,7 @@
 //  ArticleViewModel.swift
 //  MVVM-C
 //
-//  Created by Usemobile on 09/06/20.
+//  Created by Tulio Parreiras on 09/06/20.
 //  Copyright © 2020 Jakub Homik. All rights reserved.
 //
 
