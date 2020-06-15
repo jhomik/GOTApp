@@ -40,26 +40,3 @@ public final class MainCoordinator: Coordinator {
     }
     
 }
-
-final class NavigationCoordinator: Coordinator {
-    
-    var presentedController: UIViewController? {
-        return self.navigationController.children.last
-    }
-    
-    var navigationController: UINavigationController
-    
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
-    }
-    
-    func start(viewController: UIViewController) {
-        self.navigationController.pushViewController(viewController, animated: false)
-    }
-    
-    func presentArticleDetails(_ viewModel: ArticleViewModel) {
-        let viewController = DetailViewVC(viewModel: viewModel)
-        self.navigationController.pushViewController(viewController, animated: true)
-    }
-    
-}
