@@ -19,17 +19,12 @@ class FavoritesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
-        configureViewController()
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tableView.reloadData()
-    }
-    
-    func configureViewController() {
-        title = "Favorite"
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func configureTableView() {

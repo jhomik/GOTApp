@@ -41,8 +41,12 @@ public final class MainCoordinator: Coordinator {
     
     private func getFavoriteTab() -> UINavigationController {
         let favoriteVC = FavoritesVC()
+        favoriteVC.title = "Favorites"
         let favoriteNavigationController = UINavigationController(rootViewController: favoriteVC)
-        favoriteNavigationController.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "star"), selectedImage: UIImage(systemName: "star.fill"))
+        favoriteNavigationController.tabBarItem = UITabBarItem(
+            title: favoriteVC.title,
+            image: UIImage(systemName: "star"),
+            selectedImage: UIImage(systemName: "star.fill"))
         return favoriteNavigationController
     }
     
