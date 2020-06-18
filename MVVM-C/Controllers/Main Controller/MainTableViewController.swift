@@ -33,6 +33,11 @@ final class MainTableViewController: UITableViewController {
         }
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.viewModel.forEach { $0.updateFavoriteState() }
+    }
 
     // MARK: - Table view data source
 

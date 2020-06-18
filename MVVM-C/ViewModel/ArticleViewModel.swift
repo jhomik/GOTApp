@@ -37,6 +37,7 @@ final class ArticleViewModel {
     
     private(set) var isFavorited: Bool {
         didSet {
+            guard self.isFavorited != oldValue else { return }
             self.onFavorite.keys.forEach { key in
                 self.onFavorite[key]?(self.isFavorited)
             }
@@ -55,6 +56,10 @@ final class ArticleViewModel {
         } else {
             ArticleManager.shared.remove(favorites: self.model) { _ in }
         }
+    }
+    
+    func updateFavoriteState() {
+        self.isFavorited = ArticleManager.shared.articles.contains(self.model)
     }
     
 }
