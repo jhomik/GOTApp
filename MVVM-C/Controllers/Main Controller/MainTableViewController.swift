@@ -10,7 +10,7 @@ import UIKit
 
 final class MainTableViewController: UITableViewController {
     
-    var viewModel = [ArticleViewModel]() {
+    var viewModel = [ArticleViewModel]() { 
         didSet {
             self.tableView.reloadData()
         }

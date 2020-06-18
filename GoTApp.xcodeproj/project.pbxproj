@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		5A3732242451BFB700B17D85 /* GoTCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3732232451BFB700B17D85 /* GoTCustomCell.swift */; };
 		5A3732262455917A00B17D85 /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3732252455917A00B17D85 /* ArticleManager.swift */; };
-		5A81D0892445DCCD006C50BF /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A81D0882445DCCD006C50BF /* FavoritesVC.swift */; };
-		5AE593692459FAE70089D0BF /* GoTFavoriteCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE593682459FAE70089D0BF /* GoTFavoriteCustomCell.swift */; };
 		5AFF4315243CC94B00877590 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF4314243CC94B00877590 /* AppDelegate.swift */; };
 		5AFF4317243CC94B00877590 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF4316243CC94B00877590 /* SceneDelegate.swift */; };
 		5AFF431E243CC94E00877590 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AFF431D243CC94E00877590 /* Assets.xcassets */; };
@@ -23,6 +21,10 @@
 		5AFF433A243DFAA200877590 /* GoTLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF4339243DFAA200877590 /* GoTLabel.swift */; };
 		5AFF4342243E2A0C00877590 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF4341243E2A0C00877590 /* UIViewController+Ext.swift */; };
 		5AFF4348243E418C00877590 /* GoTImageThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF4347243E418C00877590 /* GoTImageThumbnail.swift */; };
+		FC927D42249BC2B900E2D55D /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC927D41249BC2B900E2D55D /* FavoritesVC.swift */; };
+		FC927D44249BC2BD00E2D55D /* GoTFavoriteCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC927D43249BC2BD00E2D55D /* GoTFavoriteCustomCell.swift */; };
+		FC927D46249BC2D300E2D55D /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC927D45249BC2D200E2D55D /* FavoritesVC.swift */; };
+		FC927D48249BC2E200E2D55D /* GoTFavoriteCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC927D47249BC2E200E2D55D /* GoTFavoriteCustomCell.swift */; };
 		FC93B02B248FE3E60035EEB8 /* MVVM_C.h in Headers */ = {isa = PBXBuildFile; fileRef = FC93B029248FE3E60035EEB8 /* MVVM_C.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FC93B02E248FE3E60035EEB8 /* MVVM_C.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC93B027248FE3E60035EEB8 /* MVVM_C.framework */; };
 		FC93B02F248FE3E60035EEB8 /* MVVM_C.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC93B027248FE3E60035EEB8 /* MVVM_C.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -66,8 +68,6 @@
 /* Begin PBXFileReference section */
 		5A3732232451BFB700B17D85 /* GoTCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoTCustomCell.swift; sourceTree = "<group>"; };
 		5A3732252455917A00B17D85 /* ArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
-		5A81D0882445DCCD006C50BF /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
-		5AE593682459FAE70089D0BF /* GoTFavoriteCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoTFavoriteCustomCell.swift; sourceTree = "<group>"; };
 		5AFF4311243CC94B00877590 /* GoTApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoTApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AFF4314243CC94B00877590 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AFF4316243CC94B00877590 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +82,10 @@
 		5AFF4339243DFAA200877590 /* GoTLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoTLabel.swift; sourceTree = "<group>"; };
 		5AFF4341243E2A0C00877590 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		5AFF4347243E418C00877590 /* GoTImageThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoTImageThumbnail.swift; sourceTree = "<group>"; };
+		FC927D41249BC2B900E2D55D /* FavoritesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
+		FC927D43249BC2BD00E2D55D /* GoTFavoriteCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoTFavoriteCustomCell.swift; sourceTree = "<group>"; };
+		FC927D45249BC2D200E2D55D /* FavoritesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesVC.swift; path = "MVVM-C/Controllers/Favorites /FavoritesVC.swift"; sourceTree = SOURCE_ROOT; };
+		FC927D47249BC2E200E2D55D /* GoTFavoriteCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoTFavoriteCustomCell.swift; path = "MVVM-C/Controllers/Favorites /GoTFavoriteCustomCell.swift"; sourceTree = SOURCE_ROOT; };
 		FC93B027248FE3E60035EEB8 /* MVVM_C.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MVVM_C.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC93B029248FE3E60035EEB8 /* MVVM_C.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVVM_C.h; sourceTree = "<group>"; };
 		FC93B02A248FE3E60035EEB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -121,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				5A3732232451BFB700B17D85 /* GoTCustomCell.swift */,
-				5AE593682459FAE70089D0BF /* GoTFavoriteCustomCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -163,7 +166,6 @@
 			children = (
 				5AFF432A243CCBAA00877590 /* MainViewVC.swift */,
 				5AFF432C243CCCAC00877590 /* DetailViewVC.swift */,
-				5A81D0882445DCCD006C50BF /* FavoritesVC.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -193,6 +195,8 @@
 			children = (
 				5AFF4332243CD31C00877590 /* NetworkManager.swift */,
 				5A3732252455917A00B17D85 /* ArticleManager.swift */,
+				FC927D45249BC2D200E2D55D /* FavoritesVC.swift */,
+				FC927D47249BC2E200E2D55D /* GoTFavoriteCustomCell.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -239,6 +243,15 @@
 			path = ImageViews;
 			sourceTree = "<group>";
 		};
+		FC927D3C249BC1F000E2D55D /* Favorites  */ = {
+			isa = PBXGroup;
+			children = (
+				FC927D41249BC2B900E2D55D /* FavoritesVC.swift */,
+				FC927D43249BC2BD00E2D55D /* GoTFavoriteCustomCell.swift */,
+			);
+			path = "Favorites ";
+			sourceTree = "<group>";
+		};
 		FC93B028248FE3E60035EEB8 /* MVVM-C */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +278,7 @@
 		FC93B037248FE57E0035EEB8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FC927D3C249BC1F000E2D55D /* Favorites  */,
 				FCFE16BD24913DD000FD0E40 /* Article Details */,
 				FC93B038248FE5840035EEB8 /* Main Controller */,
 			);
@@ -444,14 +458,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A81D0892445DCCD006C50BF /* FavoritesVC.swift in Sources */,
 				5AFF4348243E418C00877590 /* GoTImageThumbnail.swift in Sources */,
 				5AFF4336243CD77F00877590 /* GoTError.swift in Sources */,
 				5AFF4333243CD31C00877590 /* NetworkManager.swift in Sources */,
 				5AFF4342243E2A0C00877590 /* UIViewController+Ext.swift in Sources */,
 				5AFF4315243CC94B00877590 /* AppDelegate.swift in Sources */,
+				FC927D46249BC2D300E2D55D /* FavoritesVC.swift in Sources */,
 				5AFF433A243DFAA200877590 /* GoTLabel.swift in Sources */,
-				5AE593692459FAE70089D0BF /* GoTFavoriteCustomCell.swift in Sources */,
+				FC927D48249BC2E200E2D55D /* GoTFavoriteCustomCell.swift in Sources */,
 				5A3732242451BFB700B17D85 /* GoTCustomCell.swift in Sources */,
 				5A3732262455917A00B17D85 /* ArticleManager.swift in Sources */,
 				5AFF432D243CCCAC00877590 /* DetailViewVC.swift in Sources */,
@@ -470,9 +484,11 @@
 				FC93B046248FED050035EEB8 /* NetworkManager.swift in Sources */,
 				FC93B03A248FE5CD0035EEB8 /* MainTableViewController.swift in Sources */,
 				FCADF5D82497CAA100AACC08 /* NavigationCoordinator.swift in Sources */,
+				FC927D44249BC2BD00E2D55D /* GoTFavoriteCustomCell.swift in Sources */,
 				FC93B036248FE4270035EEB8 /* MainCoordinator.swift in Sources */,
 				FCFE16BF24913DE400FD0E40 /* DetailViewVC.swift in Sources */,
 				FCADF5D42497CA3800AACC08 /* GoTLabel.swift in Sources */,
+				FC927D42249BC2B900E2D55D /* FavoritesVC.swift in Sources */,
 				FC93B041248FE81B0035EEB8 /* Article.swift in Sources */,
 				FC93B043248FE86B0035EEB8 /* ArticleViewModel.swift in Sources */,
 				FC93B03D248FE6F60035EEB8 /* GoTCell.swift in Sources */,

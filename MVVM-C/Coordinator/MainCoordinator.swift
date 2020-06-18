@@ -34,9 +34,16 @@ public final class MainCoordinator: Coordinator {
         mainNavigationCoordinator.start(viewController: mainTableController)
         mainTableController.coordinator = mainNavigationCoordinator
         self.children = [mainNavigationCoordinator]
-        self.tabBarController.setViewControllers([mainNavigationCoordinator.navigationController], animated: false)
+        self.tabBarController.setViewControllers([mainNavigationCoordinator.navigationController, self.getFavoriteTab()], animated: false)
         self.window.rootViewController = self.tabBarController
         self.window.makeKeyAndVisible()
+    }
+    
+    private func getFavoriteTab() -> UINavigationController {
+        let favoriteVC = FavoritesVC()
+        let favoriteNavigationController = UINavigationController(rootViewController: favoriteVC)
+        favoriteNavigationController.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "star"), selectedImage: UIImage(systemName: "star.fill"))
+        return favoriteNavigationController
     }
     
 }
