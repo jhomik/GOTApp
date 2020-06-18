@@ -29,25 +29,45 @@ public final class MainCoordinator: Coordinator {
     }
     
     public func start() {
-        let mainNavigationCoordinator = NavigationCoordinator(navigationController: .init())
-        let mainTableController = MainTableViewController()
-        mainNavigationCoordinator.start(viewController: mainTableController)
-        mainTableController.coordinator = mainNavigationCoordinator
-        self.children = [mainNavigationCoordinator]
-        self.tabBarController.setViewControllers([mainNavigationCoordinator.navigationController, self.getFavoriteTab()], animated: false)
+        let favoriteCoordinator = self.getFavoriteTab()
+        let mainNavigationCoordinator = self.getMainTab()
+        
+        self.children = [mainNavigationCoordinator, favoriteCoordinator]
+        self.tabBarController.setViewControllers([mainNavigationCoordinator.navigationController, favoriteCoordinator.navigationController], animated: false)
         self.window.rootViewController = self.tabBarController
         self.window.makeKeyAndVisible()
     }
     
-    private func getFavoriteTab() -> UINavigationController {
+    private func getMainTab() -> NavigationCoordinator {
+        let mainNavigationCoordinator = NavigationCoordinator()
+        let mainTableController = MainTableViewController()
+        mainTableController.title = "Feed"
+        mainNavigationCoordinator.start(viewController: mainTableController)
+        mainTableController.coordinator = mainNavigationCoordinator
+        
+        let mainNavigationController = mainNavigationCoordinator.navigationController
+        mainNavigationController.tabBarItem = UITabBarItem(
+            title: mainTableController.title,
+            image: UIImage(systemName: "folder"),
+            selectedImage: UIImage(systemName: "folder.fill"))
+        
+        return mainNavigationCoordinator
+    }
+    
+    private func getFavoriteTab() -> NavigationCoordinator {
+        let favoriteCoordinator = NavigationCoordinator()
+        
         let favoriteVC = FavoritesVC()
+        favoriteVC.coordinator = favoriteCoordinator
+        
+        favoriteCoordinator.start(viewController: favoriteVC)
         favoriteVC.title = "Favorites"
-        let favoriteNavigationController = UINavigationController(rootViewController: favoriteVC)
+        let favoriteNavigationController = favoriteCoordinator.navigationController
         favoriteNavigationController.tabBarItem = UITabBarItem(
             title: favoriteVC.title,
             image: UIImage(systemName: "star"),
             selectedImage: UIImage(systemName: "star.fill"))
-        return favoriteNavigationController
+        return favoriteCoordinator
     }
     
 }

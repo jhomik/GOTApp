@@ -16,7 +16,7 @@ final class NavigationCoordinator: Coordinator {
     
     var navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController = .init()) {
         self.navigationController = navigationController
     }
     

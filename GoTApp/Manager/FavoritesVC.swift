@@ -11,7 +11,6 @@ import UIKit
 class FavoritesVC: UIViewController {
     
     var tableView = UITableView()
-    weak var coordinator: NavigationCoordinator?
     
     var favoritesArticle: [Article] {
         return ArticleManager.shared.articles
