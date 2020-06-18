@@ -53,8 +53,9 @@ extension FavoritesVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let detailVC = DetailViewVC(article: favoritesArticle[indexPath.row])
-//        self.navigationController?.pushViewController(detailVC, animated: true)
+        self.coordinator?.presentArticleDetails(
+            ArticleViewModel(model: self.favoritesArticle[indexPath.row],
+                             isFavorited: true))
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
