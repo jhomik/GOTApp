@@ -17,11 +17,21 @@ final class MainTableViewController: UITableViewController {
     }
     
     weak var coordinator: NavigationCoordinator?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(GoTCell.self, forCellReuseIdentifier: String(describing: GoTCell.self))
         
+        self.loadArticles()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.viewModel.forEach { $0.updateFavoriteState() }
+    }
+
+    private func loadArticles() {
         NetworkManager.shared.downloadArticles { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
@@ -31,12 +41,6 @@ final class MainTableViewController: UITableViewController {
                 }
             }
         }
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.viewModel.forEach { $0.updateFavoriteState() }
     }
 
     // MARK: - Table view data source
@@ -56,3 +60,4 @@ final class MainTableViewController: UITableViewController {
     }
 
 }
+
