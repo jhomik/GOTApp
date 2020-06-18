@@ -8,12 +8,12 @@
 
 import UIKit
 
-class NetworkManager {
+class NetworkManager: ArticleLoader {
     
     static let shared = NetworkManager()
     private let baseURL = "https://gameofthrones.fandom.com/api/v1/Articles/Top?expand=1&category=Characters&limit=75"
     
-    func downloadArticles(completion: @escaping (Result<ArticleResponse, Error>) -> Void) {
+    func loadArticle(completion: @escaping (Result<ArticleResponse, Error>) -> Void) {
         
         guard let url = URL(string: baseURL) else {
             completion(.failure(GoTError.invalidURL))

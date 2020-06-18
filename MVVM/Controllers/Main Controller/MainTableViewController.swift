@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ArticleLoader {
+    func loadArticle(completion: @escaping(Result<ArticleResponse, Error>) -> Void)
+}
+
 final class MainTableViewController: UITableViewController {
     
     var viewModel = [ArticleViewModel]() { 
@@ -16,7 +20,9 @@ final class MainTableViewController: UITableViewController {
         }
     }
     
+    var presentDetails: ((ArticleViewModel) -> Void)?
     weak var coordinator: NavigationCoordinator?
+    var articleLoader: ArticleLoader?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +38,18 @@ final class MainTableViewController: UITableViewController {
     }
 
     private func loadArticles() {
-        NetworkManager.shared.downloadArticles { [weak self] result in
-            DispatchQueue.main.async {
+        self.articleLoader?.loadArticle { [weak self] result in
+            let resultExecution = {
                 switch result {
                 case let .success(response):
                     self?.viewModel = response.items.map { ArticleViewModel(model: $0, isFavorited: ArticleManager.shared.articles.contains($0)) }
                 case .failure: break
                 }
+            }
+            if Thread.isMainThread {
+                resultExecution()
+            } else {
+                DispatchQueue.main.async(execute: resultExecution)
             }
         }
     }
@@ -56,7 +67,7 @@ final class MainTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.coordinator?.presentArticleDetails(self.viewModel[indexPath.row])
+        self.presentDetails?(self.viewModel[indexPath.row])
     }
 
 }

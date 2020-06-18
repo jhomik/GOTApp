@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import MVVM_C
+import MVVM
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 

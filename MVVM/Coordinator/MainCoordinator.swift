@@ -42,6 +42,10 @@ public final class MainCoordinator: Coordinator {
         let mainNavigationCoordinator = NavigationCoordinator()
         let mainTableController = MainTableViewController()
         mainTableController.title = "Feed"
+        mainTableController.articleLoader = NetworkManager.shared
+        mainTableController.presentDetails = { [weak mainNavigationCoordinator] viewModel in
+            mainNavigationCoordinator?.presentArticleDetails(viewModel)
+        }
         mainNavigationCoordinator.start(viewController: mainTableController)
         mainTableController.coordinator = mainNavigationCoordinator
         
