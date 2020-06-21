@@ -19,17 +19,12 @@ class FavoritesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
-        configureViewController()
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tableView.reloadData()
-    }
-    
-    func configureViewController() {
-        title = "Favorite"
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func configureTableView() {
@@ -57,8 +52,8 @@ extension FavoritesVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = DetailViewVC(article: favoritesArticle[indexPath.row])
-        self.navigationController?.pushViewController(detailVC, animated: true)
+//        let detailVC = DetailViewVC(article: favoritesArticle[indexPath.row])
+//        self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
